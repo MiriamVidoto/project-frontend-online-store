@@ -9,6 +9,8 @@ export async function getCategories() {
   }
 }
 
+// oi
+
 export async function getProductsFromCategoryAndQuery(categoryId) {
   try {
     const UrlCategoryProd = `https://api.mercadolibre.com/sites/MLB/search?category=${categoryId}`;
