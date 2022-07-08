@@ -34,12 +34,17 @@ class Home extends React.Component {
       isLoading: true,
     });
     const result = await getProductsFromCategoryAndQuery(searchTerm);
-    console.log(searchTerm);
     this.setState({
       isLoading: false,
       products: result.results,
       searchTerm: '',
     });
+  }
+
+  getCategory = (id) => {
+    this.setState({
+      searchTerm: id,
+    }, () => this.getProducts());
   }
 
   render() {
@@ -75,7 +80,14 @@ class Home extends React.Component {
         <div className="main-content">
           <nav className="nav-content">
             { categories.map(({ name, id }) => (
-              <NavLink to="" key={ id } data-testid="category">{ name }</NavLink>
+              <NavLink
+                to=""
+                key={ id }
+                data-testid="category"
+                onClick={ () => this.getCategory(id) }
+              >
+                { name }
+              </NavLink>
             )) }
           </nav>
           <div className="product-content">
