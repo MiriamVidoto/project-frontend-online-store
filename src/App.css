@@ -36,6 +36,23 @@
   width: fit-content;
 }
 
+.product-content {
+  align-items: flex-start;
+  background-color: #ddd;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: row;
+  gap: 5px; 
+  justify-content: center;
+  padding: 10px;
+  flex-grow: 2;
+  flex-wrap: wrap;
+}
+
+.main-content {
+  display: flex;
+}
+
 .App-header {
   align-items: center;
   background-color: #282c34;
