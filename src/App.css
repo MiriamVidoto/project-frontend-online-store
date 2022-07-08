@@ -21,8 +21,19 @@
   border: 2px solid black;
   display: flex;
   flex-direction: column;
-  height: 100px;
   justify-content: center;
+}
+
+.nav-content {
+  align-items: flex-start;
+  background-color: #ddd;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: center;
+  padding: 10px;
+  width: fit-content;
 }
 
 .App-header {
