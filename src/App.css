@@ -15,6 +15,16 @@
 
 }
 
+.colum-content {
+  align-items: center;
+  background-color: #ddd;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+  justify-content: center;
+}
+
 .App-header {
   align-items: center;
   background-color: #282c34;
