@@ -10,7 +10,6 @@ class Home extends React.Component {
       products: [],
       isLoading: false,
       searchTerm: '',
-      searchResult: '',
     };
   }
 
@@ -31,13 +30,11 @@ class Home extends React.Component {
       isLoading: false,
       products: result.results,
       searchTerm: '',
-      searchResult: result.results.length === 0 && 'Nenhum produto foi encontrado',
     });
-    console.log(result.results);
   }
 
   render() {
-    const { searchTerm, isLoading, products, searchResult } = this.state;
+    const { searchTerm, isLoading, products } = this.state;
     return (
       <div className="colum-content">
         <Link
@@ -65,10 +62,9 @@ class Home extends React.Component {
           Digite algum termo de pesquisa ou escolha uma categoria.
         </p>
         {
-          searchResult.length === 0
-          && <p>{searchResult}</p>
+          isLoading && <p>Carregando...</p>
         }
-        {isLoading ? 'Carregando...'
+        {products.length === 0 ? <p>Nenhum produto foi encontrado</p>
           : (
             products.map((product) => (
               <ProductCard
