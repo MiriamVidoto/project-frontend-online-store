@@ -9,11 +9,9 @@ export async function getCategories() {
   }
 }
 
-// oi
-
-export async function getProductsFromCategoryAndQuery(categoryId) {
+export async function getProductsFromCategoryAndQuery(query, categoryId) {
   try {
-    const UrlCategoryProd = `https://api.mercadolibre.com/sites/MLB/search?category=${categoryId}`;
+    const UrlCategoryProd = `https://api.mercadolibre.com/sites/MLB/search?category=${categoryId}&q=${query}`; // fizemos uma alteração incluindo o segundo parametro
     const response = await fetch(UrlCategoryProd);
     const data = await response.json();
     return data;
