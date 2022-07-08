@@ -7,7 +7,7 @@ class Home extends React.Component {
   constructor() {
     super();
     this.state = {
-      products: [],
+      products: [''],
       isLoading: false,
       searchTerm: '',
       categories: [],
@@ -82,7 +82,7 @@ class Home extends React.Component {
             {
               isLoading && <p>Carregando...</p>
             }
-            {products.length ? <p>Nenhum produto foi encontrado</p>
+            {products.length === 0 ? <p>Nenhum produto foi encontrado</p>
               : (
                 products.map((product) => (
                   <ProductCard
