@@ -41,9 +41,9 @@ class Home extends React.Component {
     });
   }
 
-  getCategory = (id) => {
+  getCategory = (name) => {
     this.setState({
-      searchTerm: id,
+      searchTerm: name,
     }, () => this.getProducts());
   }
 
@@ -84,7 +84,7 @@ class Home extends React.Component {
                 to=""
                 key={ id }
                 data-testid="category"
-                onClick={ () => this.getCategory(id) }
+                onClick={ () => this.getCategory(name) }
               >
                 { name }
               </NavLink>
@@ -102,6 +102,7 @@ class Home extends React.Component {
                     title={ product.title }
                     thumbNail={ product.thumbnail }
                     price={ product.price }
+                    id={ product.id }
                   />
                 ))
               )}
