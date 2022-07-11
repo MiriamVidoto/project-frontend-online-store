@@ -33,6 +33,7 @@ class ProductDetails extends React.Component {
       price,
       thumbnail,
     } = result;
+    const { addToCart, match: { params: { id } } } = this.props;
 
     if (loading) {
       return (
@@ -52,7 +53,12 @@ class ProductDetails extends React.Component {
             <img src={ thumbnail } alt={ title } />
           </div>
         </div>
-        <button type="button">
+        <button
+          type="button"
+          data-testid="product-detail-add-to-cart"
+          onClick={ addToCart }
+          value={ id }
+        >
           Adicionar ao Carrinho
         </button>
       </div>
@@ -66,6 +72,7 @@ ProductDetails.propTypes = {
       id: PropTypes.string,
     }).isRequired,
   }).isRequired,
+  addToCart: PropTypes.func.isRequired,
 };
 
 export default ProductDetails;
