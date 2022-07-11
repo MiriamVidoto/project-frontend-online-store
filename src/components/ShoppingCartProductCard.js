@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/ShoppingCartProductCard.css';
+import PropTypes from 'prop-types';
 
 class ShoppingCartProductCard extends React.Component {
   constructor() {
@@ -25,6 +26,7 @@ class ShoppingCartProductCard extends React.Component {
 
   render() {
     const { quantity } = this.state;
+    const { thumbnail, title, price } = this.props;
     return (
       <div className="product-info-content">
         <button
@@ -32,8 +34,8 @@ class ShoppingCartProductCard extends React.Component {
         >
           Excluir
         </button>
-        <img src="Imagem" alt="Imagem" />
-        <p>Nome</p>
+        <img src={ thumbnail } alt={ title } />
+        <p data-testid="shopping-cart-product-name">{ title }</p>
         <button
           type="button"
           data-testid="product-decrease-quantity"
@@ -42,7 +44,12 @@ class ShoppingCartProductCard extends React.Component {
         >
           -
         </button>
-        <p className="quantity">{ quantity }</p>
+        <p
+          data-testid="shopping-cart-product-quantity"
+          className="quantity"
+        >
+          { quantity }
+        </p>
         <button
           type="button"
           data-testid="product-increase-quantity"
@@ -51,10 +58,16 @@ class ShoppingCartProductCard extends React.Component {
         >
           +
         </button>
-        <p>1000</p>
+        <p>{(price * quantity).toFixed(2)}</p>
       </div>
     );
   }
 }
+
+ShoppingCartProductCard.propTypes = {
+  thumbnail: PropTypes.string,
+  title: PropTypes.string,
+  price: PropTypes.number,
+}.isRequired;
 
 export default ShoppingCartProductCard;
