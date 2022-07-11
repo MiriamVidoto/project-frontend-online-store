@@ -32,6 +32,8 @@ class ProductDetails extends React.Component {
       title,
       price,
       thumbnail,
+      attributes,
+      warranty,
     } = result;
 
     if (loading) {
@@ -51,6 +53,17 @@ class ProductDetails extends React.Component {
             <p>{ `R$ ${price.toFixed(2)}`}</p>
             <img src={ thumbnail } alt={ title } />
           </div>
+        </div>
+        <div className="container">
+          <h3>Especificações técnicas</h3>
+          <ul>
+            <li>{ warranty }</li>
+            { attributes
+              .map((ele) => (
+                <li key={ ele.name }>
+                  { `${ele.name}: ${ele.value_name}` }
+                </li>)) }
+          </ul>
         </div>
         <button type="button">
           Adicionar ao Carrinho
