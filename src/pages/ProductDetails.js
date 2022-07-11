@@ -32,6 +32,8 @@ class ProductDetails extends React.Component {
       title,
       price,
       thumbnail,
+      attributes,
+      warranty,
     } = result;
     const { addToCart, match: { params: { id } } } = this.props;
 
@@ -44,7 +46,13 @@ class ProductDetails extends React.Component {
       <div className="main">
         <div className="header">
           <Link className="links" to="/">Voltar</Link>
-          <Link className="links" to="/shoppingcart">Meu carrinho</Link>
+          <Link
+            data-testid="shopping-cart-button"
+            className="links"
+            to="/shoppingcart"
+          >
+            Meu carrinho
+          </Link>
         </div>
         <div className="content">
           <div className="container">
@@ -52,6 +60,17 @@ class ProductDetails extends React.Component {
             <p>{ `R$ ${price.toFixed(2)}`}</p>
             <img src={ thumbnail } alt={ title } />
           </div>
+        </div>
+        <div className="container">
+          <h3>Especificações técnicas</h3>
+          <ul>
+            <li>{ warranty }</li>
+            { attributes
+              .map((ele, index) => (
+                <li key={ index }>
+                  { `${ele.name}: ${ele.value_name}` }
+                </li>)) }
+          </ul>
         </div>
         <button
           type="button"
