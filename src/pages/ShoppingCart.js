@@ -18,7 +18,7 @@ class ShoppingCart extends React.Component {
                 price={ price }
 
               />
-              // <div key={ i }> *
+              // <div key={ i }>
               //   <img src={ thumbnail } alt={ title } />*
               //   <p data-testid="shopping-cart-product-name">{ title }</p>*
               //   <p>{ price }</p>
