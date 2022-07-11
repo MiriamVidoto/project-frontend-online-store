@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { getCategories, getProductsFromCategoryAndQuery } from '../services/api';
 import ProductCard from '../components/ProductCard';
 
@@ -11,7 +12,6 @@ class Home extends React.Component {
       isLoading: false,
       searchTerm: '',
       categories: [],
-      ShoppingCart: [],
     };
   }
 
@@ -48,21 +48,21 @@ class Home extends React.Component {
     }, () => this.getProducts());
   }
 
-  handleShoppingCart = ({ target }) => {
-    const { name, value, id } = target;
-    const products = {
-      title: name,
-      key: id,
-      price: value,
-    };
-    this.setState((prevent) => ({
-      ShoppingCart: [...prevent.ShoppingCart, products],
-    }));
-  }
+  // handleShoppingCart = ({ target }) => {
+  //   const { name, value, id } = target;
+  //   const products = {
+  //     title: name,
+  //     key: id,
+  //     price: value,
+  //   };
+  //   this.setState((prevent) => ({
+  //     ShoppingCart: [...prevent.ShoppingCart, products],
+  //   }));
+  // }
 
   render() {
-    const { searchTerm, isLoading, products, categories, ShoppingCart } = this.state;
-    console.log(ShoppingCart);
+    const { searchTerm, isLoading, products, categories } = this.state;
+    const { addToCart } = this.props;
     return (
       <div>
         <div className="colum-content">
@@ -116,7 +116,7 @@ class Home extends React.Component {
                     title={ product.title }
                     thumbNail={ product.thumbnail }
                     price={ product.price }
-                    cart={ this.handleShoppingCart }
+                    cart={ addToCart }
                     id={ product.id }
                   />
                 ))
@@ -127,5 +127,9 @@ class Home extends React.Component {
     );
   }
 }
+
+Home.propTypes = {
+  addToCart: PropTypes.func.isRequired,
+};
 
 export default Home;
