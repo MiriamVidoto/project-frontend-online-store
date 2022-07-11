@@ -110,9 +110,9 @@ class Home extends React.Component {
             }
             {products.length === 0 ? <p>Nenhum produto foi encontrado</p>
               : (
-                products.map((product) => (
+                products.map((product, index) => (
                   <ProductCard
-                    key={ product.id }
+                    key={ index }
                     title={ product.title }
                     thumbNail={ product.thumbnail }
                     price={ product.price }

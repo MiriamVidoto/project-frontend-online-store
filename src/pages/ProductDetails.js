@@ -35,6 +35,7 @@ class ProductDetails extends React.Component {
       attributes,
       warranty,
     } = result;
+    const { addToCart, match: { params: { id } } } = this.props;
 
     if (loading) {
       return (
@@ -45,7 +46,13 @@ class ProductDetails extends React.Component {
       <div className="main">
         <div className="header">
           <Link className="links" to="/">Voltar</Link>
-          <Link className="links" to="/shoppingcart">Meu carrinho</Link>
+          <Link
+            data-testid="shopping-cart-button"
+            className="links"
+            to="/shoppingcart"
+          >
+            Meu carrinho
+          </Link>
         </div>
         <div className="content">
           <div className="container">
@@ -59,13 +66,18 @@ class ProductDetails extends React.Component {
           <ul>
             <li>{ warranty }</li>
             { attributes
-              .map((ele) => (
-                <li key={ ele.name }>
+              .map((ele, index) => (
+                <li key={ index }>
                   { `${ele.name}: ${ele.value_name}` }
                 </li>)) }
           </ul>
         </div>
-        <button type="button">
+        <button
+          type="button"
+          data-testid="product-detail-add-to-cart"
+          onClick={ addToCart }
+          value={ id }
+        >
           Adicionar ao Carrinho
         </button>
       </div>
@@ -79,6 +91,7 @@ ProductDetails.propTypes = {
       id: PropTypes.string,
     }).isRequired,
   }).isRequired,
+  addToCart: PropTypes.func.isRequired,
 };
 
 export default ProductDetails;
