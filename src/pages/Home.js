@@ -118,6 +118,7 @@ class Home extends React.Component {
                     price={ product.price }
                     cart={ addToCart }
                     id={ product.id }
+                    name={ JSON.stringify(product) } // adicionei o name para utilizar no shoppingcart
                   />
                 ))
               )}

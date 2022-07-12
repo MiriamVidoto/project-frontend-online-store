@@ -4,7 +4,7 @@ import './App.css';
 import Home from './pages/Home';
 import ProductDetails from './pages/ProductDetails';
 import ShoppingCart from './pages/ShoppingCart';
-import { getProductsDetails } from './services/api';
+// import { getProductsDetails } from './services/api';
 
 class App extends React.Component {
   constructor() {
@@ -14,13 +14,14 @@ class App extends React.Component {
     };
   }
 
-  addToCart = async ({ target }) => {
-    const product = await getProductsDetails(target.value);
+  addToCart = ({ target }) => { // retirei o async
+    // const product = await getProductsDetails(target.value);
+    const product = JSON.parse(target.name);
     const { id, title, price, thumbnail } = product;
     this.setState((prevState) => ({
       cartProducts: (prevState.cartProducts.some((item) => item.id === id))
         ? prevState.cartProducts
-        : [{ id, title, price, thumbnail }, ...prevState.cartProducts],
+        : [...prevState.cartProducts, { id, title, price, thumbnail }],
     }));
   }
 
