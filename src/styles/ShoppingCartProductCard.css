@@ -1,0 +1,17 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.product-info-content {
+  border: 1px solid black;
+  display: flex;
+  max-width: 500px;
+  min-height: 40px;
+}
+
+.quantity {
+  border: 1px solid black;
+  border-radius: 50%;
+}

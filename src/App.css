@@ -15,6 +15,43 @@
 
 }
 
+.colum-content {
+  align-items: center;
+  background-color: #ddd;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.nav-content {
+  align-items: flex-start;
+  background-color: #ddd;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: center;
+  padding: 10px;
+  width: fit-content;
+}
+
+.product-content {
+  align-items: flex-start;
+  background-color: #ddd;
+  border: 2px solid black;
+  display: flex;
+  flex-flow: row wrap;
+  flex-grow: 2;
+  gap: 5px;
+  justify-content: center;
+  padding: 10px;
+}
+
+.main-content {
+  display: flex;
+}
+
 .App-header {
   align-items: center;
   background-color: #282c34;
