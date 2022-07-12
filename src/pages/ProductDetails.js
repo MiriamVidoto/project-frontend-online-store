@@ -77,6 +77,7 @@ class ProductDetails extends React.Component {
           data-testid="product-detail-add-to-cart"
           onClick={ addToCart }
           value={ id }
+          name={ JSON.stringify(result) } // adicionei esta linha
         >
           Adicionar ao Carrinho
         </button>
